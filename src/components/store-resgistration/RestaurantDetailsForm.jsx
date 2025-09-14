@@ -68,20 +68,21 @@ const RestaurantDetailsForm = ({
 							padding: { xs: "0px", md: "20px" },
 							borderRadius: "10px",
 							gap: "20px",
-							backgroundColor: (theme) =>
-								theme.palette.background.default,
+							  backgroundColor: "transparent",
+							// backgroundColor: (theme) =>
+							// 	theme.palette.background.default,
 						}}
 					>
-						<LangTab
+						{/* <LangTab
 							tabs={tabs}
 							currentTab={currentTab}
 							setCurrentTab={handleCurrentTab}
 							fontSize=""
-						/>
+						/> */}
 						<Grid item xs={12}>
 							<CustomTextFieldWithFormik
 							   labelColor={alpha(theme.palette.neutral[1000],0.8)}
-								backgroundColor
+								// backgroundColor
 								required="true"
 								type="text"
 								label={t("Vendor Name")}
@@ -122,7 +123,7 @@ const RestaurantDetailsForm = ({
 						<Grid item xs={12} sm={12} md={12}>
 							<CustomTextFieldWithFormik
 							labelColor={alpha(theme.palette.neutral[1000],0.8)}
-								backgroundColor
+								// backgroundColor
 								placeholder={t("Vendor address")}
 								required="true"
 								type="text"

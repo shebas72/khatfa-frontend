@@ -72,7 +72,9 @@ const UserInfo = ({
 
   return (
     <>
-      <CustomBoxFullWidth>
+      <CustomBoxFullWidth  sx={{
+    backgroundColor: "transparent !important",
+  }}>
         <Grid container spacing={2}>
           <Grid item xs={12} lg={9}>
             <Grid container spacing={3}>

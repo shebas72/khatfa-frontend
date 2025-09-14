@@ -10,7 +10,7 @@ const DeliverymanFormWrapper = ({ title, component }) => {
     <>
       <CustomBoxFullWidth
         sx={{
-          bgcolor: (theme) => theme.palette.neutral[100],
+          backgroundColor: "transparent !important",
           mb: "30px",
           pb: "30px",
           pt: "20px",

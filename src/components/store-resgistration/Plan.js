@@ -19,9 +19,10 @@ const PlanItemContainer = styled(Box)(({ theme, isActive, activeItem }) => ({
     : theme.palette.neutral[300],
   "--success": isActive ? "#ffffff" : "#039d55",
   "--primary-clr": isActive ? "#f99c4d" : "#00868f",
-  backgroundColor: isActive
-    ? theme.palette.primary.main
-    : theme.palette.neutral[100],
+  // backgroundColor: isActive
+  //   ? theme.palette.primary.main
+  //   : theme.palette.neutral[100],
+  backgroundColor: "transparent",
   border: "0.72px solid #f4f4f4",
   boxShadow: activeItem && "0px 20px 40px 0px #0000001A",
   borderRadius: "8px",

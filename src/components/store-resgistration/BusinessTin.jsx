@@ -240,7 +240,7 @@ const BusinessTin = ({
                   padding: '20px',
                   borderRadius: '8px',
                   textAlign: 'center',
-                  backgroundColor: theme=>theme.palette.neutral[100],
+                  backgroundColor: "transparent",
                   cursor: 'pointer',
                   '&:hover': {
                     backgroundColor: '#f0f0f0',
