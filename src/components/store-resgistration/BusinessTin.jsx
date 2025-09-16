@@ -112,7 +112,7 @@ const BusinessTin = ({
         <Grid container spacing={2}>
           <Grid item xs={12} md={12} align="left">
             <Typography fontSize="18px" fontWeight="500">
-              {t("Business TIN")}
+              {t("Business VAT")}
             </Typography>
             <CustomDivider border="1px" paddingTop="5px" />
           </Grid>
@@ -121,8 +121,8 @@ const BusinessTin = ({
               <Grid item xs={12}>
                 <TextField
                   fontSize="12px"
-                  label={t("Taxpayer Identification Number(TIN)")}
-                  placeholder={t("Type your tin number")}
+                  label={t("VAT Number(VAT)")}
+                  placeholder={t("Type your VAT number")}
                   type="text"
                   inputMode="numeric"
                   required
@@ -218,7 +218,7 @@ const BusinessTin = ({
                     color: (theme) => theme.palette.neutral[500],
                   }}
                 >
-                  {t('TIN Certificate')}
+                  {t('VAT Certificate')}
                 </InputLabel>
                 <Typography
                   fontSize="12px"

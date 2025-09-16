@@ -2,7 +2,7 @@
 
 const neutral = {
 	90: "#FFFFFF1A",
-	100: "#A55E65",
+	100: "#eeced1ff",
 	200: "#E5E7EB",
 	300: "#F6F7FB",
 	400: "#9CA3AF",
