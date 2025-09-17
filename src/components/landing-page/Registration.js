@@ -178,7 +178,7 @@ const CenterCards = ({ data, isSmall }) => {
           headingText={data?.earning_seller_title}
           subtitleText={data?.earning_seller_sub_title}
           buttonText={data?.earning_seller_button_name}
-          redirectLink="store-registration"
+          redirectLink="https://company.khatfa.com/vendor/apply"
           isSmall={isSmall}
         />
       ) : null}

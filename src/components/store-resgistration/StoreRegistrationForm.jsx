@@ -366,8 +366,7 @@ const StoreRegistrationForm = ({ setActiveStep, setFormValues }) => {
 			<form noValidate onSubmit={RestaurantJoinFormik.handleSubmit}>
 				<Stack
 					sx={{
-						// backgroundColor: (theme) => theme.palette.neutral[100],
-						backgroundColor: "transparent",
+						backgroundColor: (theme) => theme.palette.neutral[100],
 						// backgroundColor: (theme) => alpha(theme.palette.neutral[400], 0.1),
 						padding: ".6rem",
 						borderRadius: "8px",
@@ -461,8 +460,7 @@ const StoreRegistrationForm = ({ setActiveStep, setFormValues }) => {
 				<CustomStackFullWidth
 					mt="20px"
 					sx={{
-						// backgroundColor: (theme) => theme.palette.neutral[100],
-						  backgroundColor: "transparent",
+						backgroundColor: (theme) => theme.palette.neutral[100],
 						// backgroundColor: (theme) => alpha(theme.palette.neutral[400], 0.1),
 						padding: "1rem",
 						borderRadius: "8px",
@@ -478,8 +476,7 @@ const StoreRegistrationForm = ({ setActiveStep, setFormValues }) => {
 				<CustomStackFullWidth
 					mt="20px"
 					sx={{
-						// backgroundColor: (theme) => theme.palette.neutral[100],
-						  backgroundColor: "transparent",
+						backgroundColor: (theme) => theme.palette.neutral[100],
 						// backgroundColor: (theme) => alpha(theme.palette.neutral[400], 0.1),
 						padding: "1rem",
 						borderRadius: "8px",
@@ -494,8 +491,7 @@ const StoreRegistrationForm = ({ setActiveStep, setFormValues }) => {
 				<CustomStackFullWidth
 					mt="20px"
 					sx={{
-						// backgroundColor: (theme) => theme.palette.neutral[100],
-						  backgroundColor: "transparent",
+						backgroundColor: (theme) => theme.palette.neutral[100],
 						// backgroundColor: (theme) => alpha(theme.palette.neutral[400], 0.1),
 						padding: "1rem",
 						borderRadius: "8px",

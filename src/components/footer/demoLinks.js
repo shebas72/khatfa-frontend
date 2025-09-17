@@ -2,7 +2,7 @@ export const RouteLinksData = [
   {
     name: "Become a Vendor owner",
     value: "restaurant_owner",
-    link: "/store-registration",
+    link: "https://company.khatfa.com/vendor/apply",
   },
   {
     name: "Become a delivery man",
