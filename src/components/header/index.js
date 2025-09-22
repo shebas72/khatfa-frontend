@@ -27,25 +27,28 @@ const HeaderComponent = () => {
   }
 
   return (
-    <AppBarStyle
-      scrolling={location || token ? scrolling : false}
-      isSmall={isSmall}
-    >
-      <Box>
-        <NoSsr>
-          {(location || token) && (
-            <Card
-              sx={{
-                boxShadow: "none",
-              }}
-            >
-              <TopNavBar configData={configData} />
-            </Card>
-          )}
-          <SecondNavBar configData={configData} />
-        </NoSsr>
-      </Box>
-    </AppBarStyle>
+   <AppBarStyle
+  color="transparent"   // 👈 stops MUI from overriding your background
+  scrolling={location || token ? scrolling : false}
+  isSmall={isSmall}
+>
+  <Box>
+    <NoSsr>
+      {(location || token) && (
+        <Card
+          sx={{
+            boxShadow: "none",
+            backgroundColor: "transparent", // 👈 important, removes white card bg
+          }}
+        >
+          <TopNavBar configData={configData} />
+        </Card>
+      )}
+      <SecondNavBar configData={configData} />
+    </NoSsr>
+  </Box>
+</AppBarStyle>
+
   );
 };
 

@@ -11,9 +11,11 @@ const neutral = {
 	700: "#374151",
 	800: "#1F2937",
 	900: "#111827",
-	1000: "#212E28",
+	1000: "#ffffff",
 	1100: "#D6D6D6",
 	1200: "#5e141a",
+	1300: "#4a091c",
+	1400: "#ffffff"
 };
 
 const background = {
@@ -28,6 +30,7 @@ const background = {
 	custom5: "#F4F6F8",
 	custom6: "#FCFCFD",
 	custom7: "#F6F6F6",
+	custom8: "#4a091c",
 };
 
 const divider = "#E6E8F0";

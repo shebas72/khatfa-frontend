@@ -528,7 +528,7 @@ const SecondNavBar = ({ configData }) => {
   return (
     <CustomBoxFullWidth
       sx={{
-        backgroundColor: theme.palette.neutral[100],
+        backgroundColor: theme.palette.neutral[1300],
         boxShadow: (theme) =>
           `0px 5px 20px -3px ${alpha(theme.palette.primary.main, 0.1)}`,
         zIndex: 1251,

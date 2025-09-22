@@ -14,10 +14,12 @@ import bgImg from "../../../public/bgimge.jpg";
 
 import React from "react";
 
-export const AppBarStyle = styled(AppBar)(({ theme, scrolling, isSmall }) => ({
-  top: !scrolling ? "0" : isSmall ? "0px" : "-30px",
-  background: `${theme.palette.mode === "light" && "#fff !important"}`,
-  transition: "all 0.4s ease",
+// export const AppBarStyle = styled(AppBar)(({ theme, scrolling, isSmall }) => ({
+//   top: !scrolling ? "0" : isSmall ? "0px" : "-30px",
+  // background: `${theme.palette.mode === "light" && "#fff !important"}`,
+// backgroundColor: "#4a091c",
+  // backgroundColor: theme.palette.neutral[1300],
+  // transition: "all 0.4s ease",
   // WebkitAnimation: !isSmall && scrolling ? "fadeInUp 0.4s" : "fadeInDown 0.4s",
   // animation: !isSmall && scrolling ? "fadeInUp 0.4s" : "fadeInDown 0.4s",
   // "@keyframes fadeInUp": {
@@ -36,6 +38,15 @@ export const AppBarStyle = styled(AppBar)(({ theme, scrolling, isSmall }) => ({
   //     transform: "translateY(0)",
   //   },
   // },
+// }));
+
+export const AppBarStyle = styled(AppBar)(({ theme, scrolling, isSmall }) => ({
+  top: !scrolling ? "0" : isSmall ? "0px" : "-30px",
+  backgroundColor: "#4a091c !important",  // your custom background
+  backgroundImage: "none !important",     // kill MUI gradients
+  color: "#fff !important",               // text contrast
+  boxShadow: "none !important",           // optional
+  zIndex: 1201,                           // above toolbar/box
 }));
 
 export const CustomStackForLoaction = styled(Stack)(({ theme }) => ({
@@ -162,7 +173,7 @@ export const StyledMenu = styled((props) => (
   },
 }));
 export const NavLinkStyle = styled(Stack)(({ theme, language_direction }) => ({
-  color: `${theme.palette.mode === "dark" ? "#fff" : "#000"}`,
+  color: `${theme.palette.mode === "dark" ? "#00000" : "#000"}`,
   fontSize: "16px",
   underLine: "none",
   "&:hover": {
@@ -176,7 +187,7 @@ export const SignInButton = styled(Button)(({ theme }) => ({
   borderRadius: "32px",
 }));
 export const NavMenuLink = styled(MenuLink)(({ theme }) => ({
-  color: theme.palette.neutral[1000],
+  color: theme.palette.neutral[1400],
   display: "flex",
   cursor: "pointer",
   fontSize: "16px",
@@ -203,7 +214,7 @@ export const CustomDrawer = styled(Drawer)(({ theme, router }) => ({
 }));
 export const CustomBottomNavigationAction = styled(BottomNavigationAction)(
   ({ theme }) => ({
-    color: theme.palette.neutral[1000],
+    color: theme.palette.neutral[1400],
     minWidth: "60px",
     fontSize: "10px !important",
     padding: "0px 0px",

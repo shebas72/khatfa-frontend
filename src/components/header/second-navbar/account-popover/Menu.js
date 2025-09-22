@@ -129,8 +129,8 @@ const Menu = ({ onClose, cartListRefetch }) => {
                   "&:hover": {
                     color: (theme) =>
                       theme.palette.mode === "dark"
-                        ? theme.palette.neutral[100]
-                        : theme.palette.neutral[1000],
+                        ? theme.palette.neutral[1400]
+                        : theme.palette.neutral[1400],
                   },
                 }}
               >

@@ -28,7 +28,8 @@ const TopNavBar = () => {
 				<Box
 					sx={{
 						width: "100%",
-						background: (theme) => theme.palette.neutral[100],
+						// background: (theme) => theme.palette.neutral[100],
+						background: "#4a091c",
 					}}
 				>
 					{!isSmall && (
