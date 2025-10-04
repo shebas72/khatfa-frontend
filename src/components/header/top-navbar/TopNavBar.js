@@ -24,6 +24,7 @@ const TopNavBar = () => {
 
 	return (
 		<>
+		
 			<NoSsr>
 				<Box
 					sx={{
@@ -40,6 +41,7 @@ const TopNavBar = () => {
 									borderRadius: "0",
 								}}
 							>
+								
 								<Stack
 									pt=".4rem"
 									pb=".4rem"

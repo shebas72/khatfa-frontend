@@ -4,6 +4,7 @@ import { ListItemIcon, MenuItem, Stack, Typography } from "@mui/material";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import eng from "../../../../public/landingpage/us.svg";
 import arabicImg from "../../../../public/landingpage/arabic-flag-svg.svg";
+import Link from "next/link";
 
 import { useSelector } from "react-redux";
 import { toast } from "react-hot-toast";
@@ -110,6 +111,8 @@ const CustomLanguage = ({ formmobilemenu }) => {
               priority={true}
             />
           </Stack>
+          
+          
         }
         endIcon={
           <Stack color={theme.palette.neutral[1000]}>
@@ -119,6 +122,8 @@ const CustomLanguage = ({ formmobilemenu }) => {
       >
         <Typography color={theme.palette.neutral[1000]}>
           {language === "en" ? "English" : "Arabic"}
+
+          
         </Typography>
       </TopBarButton>
       <StyledMenu
@@ -155,6 +160,8 @@ const CustomLanguage = ({ formmobilemenu }) => {
           </MenuItem>
         ))}
       </StyledMenu>
+        
+
     </>
   );
 };
