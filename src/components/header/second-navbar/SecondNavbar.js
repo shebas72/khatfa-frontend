@@ -64,7 +64,7 @@ const Cart = ({ isLoading }) => {
   return (
     <>
       <NavBarIcon
-        icon={<ShoppingCartOutlinedIcon sx={{ fontSize: "22px" }} />}
+        icon={<ShoppingCartOutlinedIcon sx={{ color: "#ffffff", fontSize: "22px" }} />}
         label={t("Cart")}
         user="false"
         handleClick={handleIconClick}

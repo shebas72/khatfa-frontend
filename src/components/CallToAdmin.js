@@ -1,5 +1,6 @@
 import { useTheme } from "@emotion/react";
-import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
+// import LocalPhoneIcon from "@mui/icons-material/PhoneIcon";
+import EmailIcon from "@mui/icons-material/Email";
 import { Typography } from "@mui/material";
 import { TopBarButton } from "./header/NavBar.style";
 import ClickToCall from "./header/top-navbar/ClickToCall";
@@ -9,7 +10,7 @@ const CallToAdmin = ({ configData }) => {
   const theme = useTheme();
 
   return (
-    <Link href={`tel:${configData?.phone}`}>
+    <Link href={`mailto:${configData?.email}`}>
       <TopBarButton
         size="small"
         variant="text"
@@ -22,7 +23,7 @@ const CallToAdmin = ({ configData }) => {
           },
         }}
         startIcon={
-          <LocalPhoneIcon
+          <EmailIcon
             sx={{
               ml: 1,
               color: (theme) => theme.palette.neutral[1000],
@@ -31,7 +32,7 @@ const CallToAdmin = ({ configData }) => {
         }
       >
         <Typography sx={{ color: (theme) => theme.palette.neutral[1000] }}>
-          {configData?.phone}
+          {configData?.email}
         </Typography>
       </TopBarButton>
     </Link>
