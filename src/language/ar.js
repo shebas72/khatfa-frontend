@@ -1050,7 +1050,7 @@ export const arabic = {
 	Accept: "يقبل",
 	"Without any payment method, you can not place the order.":
 		"بدون أي طريقة دفع ، لا يمكنك تقديم الطلب.",
-	Subscribe: "يشترك",
+	Subscribe: "اشترك ",
 	"Nothing found": "لم يتم العثور على شيء",
 	Unit: "وحدة",
 	"In Stock": "في الأوراق المالية",

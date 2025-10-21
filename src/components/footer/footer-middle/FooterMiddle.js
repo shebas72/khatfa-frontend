@@ -167,7 +167,7 @@ const FooterMiddle = (props) => {
                     href={`tel:${configData?.phone}`}
                   />
                 </Grid> */}
-                <Grid
+                {/* <Grid
                   item
                   xs={12}
                   sm={6}
@@ -195,7 +195,7 @@ const FooterMiddle = (props) => {
               configData={configData}
               />
                   </Box>
-                </Grid>
+                </Grid> */}
               </Grid>
             </Box>
           </Box>
