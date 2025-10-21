@@ -61,17 +61,17 @@ const FooterMiddle = (props) => {
               }}
             >
               <CustomImageContainer
-                src={businessLogo}
+                src="/static/logo-black-finall.png"
                 alt={`${configData?.business_name}`}
                 width="auto"
-                height="50px"
+                height="150px"
                 objectfit="contain"
               />
             </Box>
-            <SocialLinks
+            {/* <SocialLinks
               configData={configData}
               landingPageData={landingPageData}
-            />
+            /> */}
             {(Number.parseInt(
               landingPageData?.download_user_app_links?.playstore_url_status
             ) === 1 ||
@@ -141,13 +141,13 @@ const FooterMiddle = (props) => {
                   <SomeInfo
                     image={ractangle}
                     alt="rantangle"
-                    title="Send us mails"
+                    title="Send us mail"
                     info={configData?.email}
                     t={t}
                     href={`mailto:${configData?.email}`}
                   />
                 </Grid>
-                <Grid
+                {/* <Grid
                   item
                   xs={12}
                   sm={6}
@@ -166,7 +166,7 @@ const FooterMiddle = (props) => {
                     t={t}
                     href={`tel:${configData?.phone}`}
                   />
-                </Grid>
+                </Grid> */}
                 <Grid
                   item
                   xs={12}
@@ -178,15 +178,22 @@ const FooterMiddle = (props) => {
                     justifyContent: "center",
                   }}
                 >
+                 
+             
+            
                   <Box onClick={handleOpenCloseMap}>
                     <SomeInfo
                       image={magnifying}
                       alt="magnifying"
                       title="Find us here"
-                      info={configData?.address}
+                      // info={configData?.address}
+                      info={configData?.SocialLinks}
                       t={t}
                       href={false}
                     />
+                     <SocialLinks
+              configData={configData}
+              />
                   </Box>
                 </Grid>
               </Grid>

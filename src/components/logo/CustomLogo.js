@@ -3,8 +3,8 @@ import { styled } from "@mui/material";
 import CustomImageContainer from "../CustomImageContainer";
 
 export const Logo = styled("div")(({ theme, height, width }) => ({
-  width: width,
-  height: height,
+  width: "200px",
+  height: "60px",
   justifyContent: "center",
   position: "relative",
   cursor: "pointer",
