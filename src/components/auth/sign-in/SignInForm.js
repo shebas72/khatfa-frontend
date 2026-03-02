@@ -40,7 +40,7 @@ const SignInForm = ({
   only,
   handleClick,
   handleClose,
-                      isRemember
+  isRemember,
 }) => {
   const lanDirection = getLanguage() ? getLanguage() : "ltr";
 
@@ -61,7 +61,7 @@ const SignInForm = ({
   }, [loginFormik.values.email_or_phone]);
 
   return (
-    <form noValidate onSubmit={loginFormik.handleSubmit}>
+    <form noValidate onSubmit={loginFormik.handleSubmit} id="signin-form">
       <CustomStackFullWidth alignItems="center">
         <CustomStackFullWidth
           spacing={{ xs: 2, md: 3 }}
@@ -69,6 +69,7 @@ const SignInForm = ({
         >
           {isPhone === "phone" ? (
             <CustomPhoneInputManual
+              id="signin-phone-input"
               value={loginFormik.values.email_or_phone}
               onHandleChange={handleOnChange}
               initCountry={configData?.country}
@@ -81,6 +82,7 @@ const SignInForm = ({
             />
           ) : (
             <CustomTextFieldWithFormik
+              id="signin-email-input"
               autoFocus={isPhone === "email" && true}
               required
               label={t("Email/Phone")}
@@ -96,7 +98,7 @@ const SignInForm = ({
                     sx={{
                       color:
                         loginFormik.touched.email_or_phone &&
-                        !loginFormik.errors.email_or_phone
+                          !loginFormik.errors.email_or_phone
                           ? theme.palette.primary.main
                           : alpha(theme.palette.neutral[500], 0.4),
                     }}
@@ -105,8 +107,14 @@ const SignInForm = ({
               }
             />
           )}
-
+          {/* <TextField
+        id="email-input" // 👈 unique id
+        label="Email"
+        variant="outlined"
+        fullWidth
+      /> */}
           <CustomTextFieldWithFormik
+            id="signin-password-input"
             height="45px"
             required="true"
             type="password"
@@ -123,7 +131,7 @@ const SignInForm = ({
                   sx={{
                     color:
                       loginFormik.touched.password &&
-                      !loginFormik.errors.password
+                        !loginFormik.errors.password
                         ? theme.palette.primary.main
                         : alpha(theme.palette.neutral[500], 0.6),
                   }}
@@ -141,6 +149,7 @@ const SignInForm = ({
             <FormControlLabel
               control={
                 <Checkbox
+                  id="signin-remember-checkbox"
                   value="remember"
                   color="primary"
                   onChange={rememberMeHandleChange}
@@ -154,10 +163,11 @@ const SignInForm = ({
               }
             />
             <CustomLink
-             onClick={()=>{
-              dispatch(setOpenForgotPasswordModal(true))
-              handleClose()
-             }}
+              id="signin-forgot-password-link"
+              onClick={() => {
+                dispatch(setOpenForgotPasswordModal(true));
+                handleClose();
+              }}
               sx={{ fontWeight: "400", fontSize: "14px" }}
             >
               {t("Forgot password?")}
@@ -165,10 +175,10 @@ const SignInForm = ({
           </CustomStackFullWidth>
           <CustomStackFullWidth sx={{ paddingBottom: "5px" }}>
             <CustomColouredTypography
+              id="signin-terms-link"
               onClick={handleClick}
               sx={{
                 cursor: "pointer",
-                // textDecoration: 'underline',
                 fontWeight: "400",
                 fontSize: "12px",
                 [theme.breakpoints.down("sm")]: {
@@ -187,22 +197,19 @@ const SignInForm = ({
                   fontSize: "12px",
                 }}
               >
-                {t(" Terms & Conditions")}
+                {" "} {t("Terms & Conditions")}
               </Typography>
             </CustomColouredTypography>
           </CustomStackFullWidth>
-          {/*<AcceptTermsAndConditions*/}
-          {/*  handleCheckbox={handleCheckbox}*/}
-          {/*  formikType={loginFormik}*/}
-          {/*/>*/}
+
           <CustomStackFullWidth spacing={2}>
             <LoadingButton
+              id="signin-submit-button"
               type="submit"
               fullWidth
               variant="contained"
               loading={isLoading}
               sx={{ color: textColor }}
-              id="recaptcha-container"
             >
               {t("Sign In")}
             </LoadingButton>
@@ -219,6 +226,7 @@ const SignInForm = ({
                     {t("Don't have an account?")}
                   </CustomTypography>
                   <span
+                    id="signin-signup-link"
                     onClick={handleSignUp}
                     style={{
                       color: theme.palette.primary.main,

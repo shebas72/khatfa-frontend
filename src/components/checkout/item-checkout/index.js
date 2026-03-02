@@ -15,7 +15,7 @@ import { getStoresOrRestaurants } from "helper-functions/getStoresOrRestaurants"
 import { getGuestId, getToken } from "helper-functions/getToken";
 import moment from "moment/moment";
 import Router from "next/router";
-import React, { useEffect, useReducer, useState,useRef } from "react";
+import React, { useEffect, useReducer, useState, useRef } from "react";
 import { toast } from "react-hot-toast";
 import { useTranslation } from "react-i18next";
 import { useMutation, useQuery } from "react-query";
@@ -85,8 +85,8 @@ import thunderstorm from "../assets/thunderstorm.svg";
 import { useFormik } from "formik";
 
 import * as Yup from "yup";
-import {useGetTax} from "api-manage/hooks/react-query/order-place/useGetTax";
-export const deepEqual=(obj1, obj2)=> {
+import { useGetTax } from "api-manage/hooks/react-query/order-place/useGetTax";
+export const deepEqual = (obj1, obj2) => {
   if (obj1 === obj2) return true;
 
   if (
@@ -109,8 +109,7 @@ export const deepEqual=(obj1, obj2)=> {
   }
 
   return true;
-}
-
+};
 
 const ItemCheckout = (props) => {
   const { configData, router, page, cartList, campaignItemList, totalAmount } =
@@ -147,6 +146,7 @@ const ItemCheckout = (props) => {
   const [isPackaging, setIsPackaging] = useState(false);
   const [packagingCharge, setPackagingCharge] = useState(0);
   const [paymentMethodImage, setPaymentMethodImage] = useState("");
+  const [changeAmount, setChangeAmount] = useState();
   const [state, customDispatch] = useReducer(scheduleReducer, INITIAL_STATE);
   const { profileInfo } = useSelector((state) => state.profileInfo);
   const { guestUserInfo } = useSelector((state) => state.guestUserInfo);
@@ -186,7 +186,7 @@ const ItemCheckout = (props) => {
     refetch: refetchOfflinePaymentOptions,
     isLoading: offlineIsLoading,
   } = useGetOfflinePaymentOptions();
-  const {mutate:taxMutate,data}=useGetTax()
+  const { mutate: taxMutate, data } = useGetTax();
 
   const passwordHandler = (value) => {
     formik.setFieldValue("password", value);
@@ -220,14 +220,13 @@ const ItemCheckout = (props) => {
     refetch: refetchDistance,
     isLoading,
   } = useQuery(
-    ["get-distancesss", storeData, address,orderType],
+    ["get-distancesss", storeData, address, orderType],
     () => GoogleApi.distanceApi(storeData, address),
     {
       enabled: true,
       onError: onErrorResponse,
     }
   );
-  console.log({distanceData})
 
   const tempDistance = handleDistance(
     distanceData?.data,
@@ -235,9 +234,9 @@ const ItemCheckout = (props) => {
     address
   );
   useEffect(() => {
-    setDDistance(Number(distanceData?.data?.distanceMeters) / 1000)
+    setDDistance(Number(distanceData?.data?.distanceMeters) / 1000);
   }, [distanceData]);
-  console.log({tempDistance,dDistance})
+
   const {
     data: extraCharge,
     isLoading: extraChargeLoading,
@@ -256,7 +255,7 @@ const ItemCheckout = (props) => {
     "order-place",
     OrderApi.placeOrder
   );
-  const userOnSuccessHandler = (res) => {};
+  const userOnSuccessHandler = (res) => { };
   const { isLoading: customerLoading, data: customerData } = useQuery(
     ["profile-info"],
     ProfileApi.profileInfo,
@@ -265,7 +264,7 @@ const ItemCheckout = (props) => {
       onError: onSingleErrorResponse,
     }
   );
-  console.log({dDistance})
+
   useEffect(() => {
     const currentLatLng = JSON.parse(localStorage.getItem("currentLatLng"));
     const location = localStorage.getItem("location");
@@ -278,11 +277,6 @@ const ItemCheckout = (props) => {
     });
     refetch();
   }, []);
-  // useEffect(() => {
-  //   if(storeData?.latitude && address){
-  //     refetchDistance()
-  //   };
-  // }, [storeData, address?.lat, address?.lng,orderType]);
 
   useEffect(() => {
     const taxAmount = getTaxableTotalPrice(
@@ -327,8 +321,8 @@ const ItemCheckout = (props) => {
         add_on_ids:
           cart?.selectedAddons?.length > 0
             ? cart?.selectedAddons?.map((add) => {
-                return add.id;
-              })
+              return add.id;
+            })
             : [],
         add_on_qtys:
           cart?.selectedAddons?.length > 0
@@ -337,12 +331,12 @@ const ItemCheckout = (props) => {
         add_ons:
           cart?.selectedAddons?.length > 0
             ? cart?.selectedAddons?.map((add) => {
-                return {
-                  id: add.id,
-                  name: add.name,
-                  price: add.price,
-                };
-              })
+              return {
+                id: add.id,
+                name: add.name,
+                price: add.price,
+              };
+            })
             : [],
         item_id: cart?.id,
         item_campaign_id: cart?.available_date_starts ? cart?.id : null,
@@ -358,29 +352,28 @@ const ItemCheckout = (props) => {
           cart?.module_type === "food"
             ? cart?.food_variations?.length > 0
               ? cart?.food_variations?.map((variation) => {
-                  return {
-                    name: variation.name,
-                    values: {
-                      label: handleValuesFromCartItems(variation.values),
-                    },
-                  };
-                })
+                return {
+                  name: variation.name,
+                  values: {
+                    label: handleValuesFromCartItems(variation.values),
+                  },
+                };
+              })
               : []
             : cart?.selectedOption?.length > 0
-            ? cart?.selectedOption
-            : [],
+              ? cart?.selectedOption
+              : [],
       };
     });
   };
-
-  console.log({distanceData})
+  console.log({})
   const handleOrderMutationObject = (carts, productList) => {
     const guestId = getToken() ? "" : guest_id;
     const isDigital =
       paymentMethod !== "cash_on_delivery" &&
-      paymentMethod !== "wallet" &&
-      paymentMethod !== "offline_payment" &&
-      paymentMethod !== ""
+        paymentMethod !== "wallet" &&
+        paymentMethod !== "offline_payment" &&
+        paymentMethod !== ""
         ? "digital_payment"
         : paymentMethod;
 
@@ -409,11 +402,7 @@ const ItemCheckout = (props) => {
       formData.append("discount_amount", getProductDiscount(productList));
       formData.append(
         "distance",
-        handleDistance(
-          distanceData?.data,
-          originData,
-          address
-        )
+        handleDistance(distanceData?.data, originData, address)
       );
       formData.append("order_amount", totalAmount);
       formData.append("dm_tips", deliveryTip);
@@ -434,7 +423,11 @@ const ItemCheckout = (props) => {
       formData.append("road", token ? address?.road : guestUserInfo?.road);
       formData.append(
         "contact_person_name",
-        guestUserInfo?.contact_person_name
+        token
+          ? address?.contact_person_name
+            ? address?.contact_person_name
+            : profileInfo?.name
+          : guestUserInfo?.contact_person_name,
       );
       formData.append(
         "contact_person_number",
@@ -462,11 +455,6 @@ const ItemCheckout = (props) => {
       formData.append("password", formik.values.password);
       return formData;
     } else {
-      console.log("vvv", handleDistance(
-        distanceData,
-        originData,
-        address
-      ),distanceData)
       return {
         cart: JSON.stringify(carts),
         ...address,
@@ -508,16 +496,16 @@ const ItemCheckout = (props) => {
         create_new_user: check ? 1 : 0,
         password: formik.values.password,
         is_guest: token ? 0 : 1,
+        bring_change_amount: changeAmount,
       };
     }
   };
-
 
   const prevCartRef = useRef(null);
   const prevCouponRef = useRef(null);
 
   useEffect(() => {
-    if ((!cartList || !storeData) && !storeId ) return;
+    if ((!cartList || !storeData) && !storeId) return;
 
     const cartChanged = !deepEqual(prevCartRef.current, cartList);
     const couponChanged = !deepEqual(prevCouponRef.current, couponDiscount);
@@ -530,9 +518,8 @@ const ItemCheckout = (props) => {
       const totalQty = 0;
       const carts = handleProductList(productList, totalQty);
       const orderObject = handleOrderMutationObject(carts, productList);
-      console.log({orderObject})
       taxMutate(orderObject, {
-       // onError: onErrorResponse,
+        // onError: onErrorResponse,
       });
     }
   }, [cartList, campaignItemList, couponDiscount, storeData]);
@@ -567,11 +554,9 @@ const ItemCheckout = (props) => {
                 const callBackUrl = token
                   ? `${window.location.origin}/profile?page=${page}`
                   : `${window.location.origin}/order?order_id=${response?.data?.order_id}&total=${response?.data?.total_ammount}`;
-                const url = `${newBaseUrl}/payment-mobile?order_id=${
-                  response?.data?.order_id
-                }&customer_id=${
-                  customerData?.data?.id ?? guest_id
-                }&callback=${callBackUrl},`;
+                const url = `${newBaseUrl}/payment-mobile?order_id=${response?.data?.order_id
+                  }&customer_id=${customerData?.data?.id ?? guest_id
+                  }&callback=${callBackUrl},`;
                 localStorage.setItem("totalAmount", totalAmount);
                 dispatch(setClearCart());
                 Router.push(url);
@@ -632,13 +617,11 @@ const ItemCheckout = (props) => {
               const callBackUrl = token
                 ? `${window.location.origin}/profile?page=${page}`
                 : `${window.location.origin}/home`;
-              const url = `${baseUrl}/payment-mobile?order_id=${
-                response?.data?.order_id
-              }&customer_id=${
-                customerData?.data?.id ?? response?.data?.user_id
+              const url = `${baseUrl}/payment-mobile?order_id=${response?.data?.order_id
+                }&customer_id=${customerData?.data?.id ?? response?.data?.user_id
                   ? response?.data?.user_id
                   : guest_id
-              }&payment_platform=${payment_platform}&callback=${callBackUrl}&payment_method=${paymentMethod}`;
+                }&payment_platform=${payment_platform}&callback=${callBackUrl}&payment_method=${paymentMethod}`;
               localStorage.setItem("totalAmount", totalAmount);
               dispatch(setGuestUserInfo(null));
               //dispatch(setClearCart());
@@ -657,7 +640,6 @@ const ItemCheckout = (props) => {
         };
         if (carts?.length > 0) {
           let order = handleOrderMutationObject(carts, productList);
-          console.log({order})
           orderMutation(order, {
             onSuccess: handleSuccess,
             onError: (error) => {
@@ -745,7 +727,7 @@ const ItemCheckout = (props) => {
     }
   };
 
-  const couponRemove = () => {};
+  const couponRemove = () => { };
   useEffect(() => {
     if (orderSuccess) {
       handleOrderSuccess();
@@ -954,7 +936,7 @@ const ItemCheckout = (props) => {
     zoneData?.data
   );
 
-  const isZoneCod = () => {};
+  const isZoneCod = () => { };
   const hasOnlyPaymentMethod = () => {
     if (
       !configData?.cash_on_delivery &&
@@ -975,6 +957,12 @@ const ItemCheckout = (props) => {
     hasOnlyPaymentMethod();
   }, [configData, isZoneDigital]);
 
+  useEffect(() => {
+    if (isZoneDigital?.cash_on_delivery &&
+      configData?.cash_on_delivery) {
+      setPaymentMethod("cash_on_delivery")
+    }
+  }, [isZoneDigital, configData?.cash_on_delivery]);
   return (
     <>
       {method === "offline" ? (
@@ -1036,6 +1024,8 @@ const ItemCheckout = (props) => {
                   switchToWallet={switchToWallet}
                   customerData={customerData}
                   payableAmount={payableAmount}
+                  changeAmount={changeAmount}
+                  setChangeAmount={setChangeAmount}
                 />
               )}
 
@@ -1135,24 +1125,7 @@ const ItemCheckout = (props) => {
                       min_order_amount={storeData?.minimum_order}
                     />
                   )}
-                  {/*{configData?.customer_wallet_status === 1 &&*/}
-                  {/*  customerData?.data?.wallet_balance > 0 &&*/}
-                  {/*  configData?.partial_payment_status === 1 && (*/}
-                  {/*    <Grid item md={12} xs={12}>*/}
-                  {/*      <PartialPayment*/}
-                  {/*        remainingBalance={*/}
-                  {/*          customerData?.data?.wallet_balance - payableAmount*/}
-                  {/*        }*/}
-                  {/*        handlePartialPayment={handlePartialPayment}*/}
-                  {/*        usePartialPayment={usePartialPayment}*/}
-                  {/*        walletBalance={customerData?.data?.wallet_balance}*/}
-                  {/*        paymentMethod={paymentMethod}*/}
-                  {/*        switchToWallet={switchToWallet}*/}
-                  {/*        removePartialPayment={removePartialPayment}*/}
-                  {/*        payableAmount={payableAmount}*/}
-                  {/*      />*/}
-                  {/*    </Grid>*/}
-                  {/*  )}*/}
+
                   {getCurrentModuleType() === "food" && storeData?.cutlery && (
                     <Cutlery isChecked={cutlery} handleChange={handleCutlery} />
                   )}
@@ -1213,6 +1186,7 @@ const ItemCheckout = (props) => {
                     storeCloseToast={storeCloseToast}
                     page={page}
                     isLoading={isLoading}
+                    totalAmount={totalAmount}
                   />
                 </Stack>
               </CustomPaperBigCard>
@@ -1221,7 +1195,7 @@ const ItemCheckout = (props) => {
           {openModal && (
             <CustomModal
               openModal={openModal}
-              //handleClose={() => setOpenModal(false)}
+            //handleClose={() => setOpenModal(false)}
             >
               <PartialPaymentModal
                 payableAmount={payableAmount}
@@ -1238,7 +1212,7 @@ const ItemCheckout = (props) => {
           {openPartialModel && (
             <CustomModal
               openModal={openPartialModel}
-              //handleClose={() => setOpenPartialModel(false)}
+            //handleClose={() => setOpenPartialModel(false)}
             >
               <PartialPaymentModal
                 payableAmount={payableAmount}

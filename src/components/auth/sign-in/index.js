@@ -14,7 +14,7 @@ import {
 import { useFireBaseOtpVerify } from "api-manage/hooks/react-query/forgot-password/useFIreBaseOtpVerify";
 import { useVerifyPhone } from "api-manage/hooks/react-query/forgot-password/useVerifyPhone";
 import { useWishListGet } from "api-manage/hooks/react-query/wish-list/useWishListGet";
-import Link from "next/link";
+
 import { useFormik } from "formik";
 import { getGuestId } from "helper-functions/getToken";
 import { useRouter } from "next/router";
@@ -491,22 +491,9 @@ const onlyOtp=centralize_login?.otp_login_status && !centralize_login?.manual_lo
           justifyContent="center"
           spacing={0.5}
         >
-          {/* <CustomTypography fontSize="14px">
+          <CustomTypography fontSize="14px">
             {t("Don't have an account?")}
-          </CustomTypography> */}
-           <Link href="https://company.khatfa.com/login/vendor" target="_blank" passHref>
-           <span
-           
-            style={{
-              color: theme.palette.primary.main,
-              textDecoration: "underline",
-              cursor: "pointer",
-              marginRight:"85px"
-            }}
-          >
-          {t("Vendor Login")}
-        </span>
-        </Link>
+          </CustomTypography>
           <span
             onClick={handleSignUp}
             style={{
@@ -518,7 +505,6 @@ const onlyOtp=centralize_login?.otp_login_status && !centralize_login?.manual_lo
           {t("Sign Up")}
         </span>
         </CustomStackFullWidth>
-        
       </CustomStackFullWidth>
     );
 
@@ -553,7 +539,7 @@ const onlyOtp=centralize_login?.otp_login_status && !centralize_login?.manual_lo
           return (
             <Stack width="100%">
               <SignInForm {...commonSignInFormProps} only handleSignUp={handleSignUp} />
-              {signUpFooter}
+              
             </Stack>
           );
 

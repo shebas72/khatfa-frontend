@@ -8,7 +8,7 @@ import {
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-   apiKey: "AIzaSyD6aYh09iuH0b5BUdazLqIXRdaXXXonPN8",
+  apiKey: "AIzaSyD6aYh09iuH0b5BUdazLqIXRdaXXXonPN8",
   authDomain: "khatfa-9bbef.firebaseapp.com",
   projectId: "khatfa-9bbef",
   storageBucket: "khatfa-9bbef.firebasestorage.app",
@@ -44,7 +44,7 @@ export const fetchToken = async (setTokenFound, setFcmToken) => {
     if (!messaging) return;
 
     const currentToken = await getToken(messaging, {
-        vapidKey: "BDlx3HWqStjDt9_OJfyiCoMES9i-9GVWA1sCjzh_ouP8opj2XaSZl40GB69TArLt3sZFg3bNj311QijgKKJdwOQ",
+      vapidKey: "BDlx3HWqStjDt9_OJfyiCoMES9i-9GVWA1sCjzh_ouP8opj2XaSZl40GB69TArLt3sZFg3bNj311QijgKKJdwOQ",
     });
 
     if (currentToken) {

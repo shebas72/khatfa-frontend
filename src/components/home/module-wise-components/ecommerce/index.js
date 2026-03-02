@@ -147,12 +147,12 @@ const Shop = ({ configData }) => {
       </Grid>
       <Grid item xs={12}>
         <CustomContainer>
-            <BestReviewedItems
-                menus={menus}
-                title="Best Reviewed Items"
-                bannerIsLoading={isLoading}
-                url={`${data?.promotional_banner_url}/${data?.best_reviewed_section_banner}`}
-            />
+          <BestReviewedItems
+            menus={menus}
+            title="Best Reviewed Items"
+            bannerIsLoading={isLoading}
+            url={`${data?.promotional_banner_url}/${data?.best_reviewed_section_banner}`}
+          />
         </CustomContainer>
       </Grid>
       <Grid item xs={12}>
